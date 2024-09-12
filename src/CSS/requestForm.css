@@ -1,0 +1,152 @@
+form {
+  width: 500px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: flex;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-group select {
+  background-color: #fff;
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-group input[type="file"] {
+  display: none;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  /* Blue background */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  color: #fff !important;
+  /* Force white text color */
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+  /* Darker blue for hover effect */
+  color: #fff;
+}
+
+.upload-btn::before {
+  content: "\f093";
+  font-family: FontAwesome;
+  margin-right: 8px;
+  color: #fff;
+  /* White icon */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: #6c757d;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* تنسيق القائمة المنسدلة */
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+}
+
+/* زر إزالة الصورة */
+.remove-btn {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: darkred;
+}
+
+.image-preview {
+  margin-top: 10px;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+/* requestForm.css */
+
+.form-group input[type="number"] {
+  border: 2px solid #ccc; 
+  padding: 10px; 
+  border-radius: 4px; 
+  margin-top: 5px; 
+}
+
+.form-group input[type="number"]:focus {
+  border-color: #007bff; 
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}

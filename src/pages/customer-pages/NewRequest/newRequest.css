@@ -1,0 +1,300 @@
+/* html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: #007bff;
+  color: rgb(4, 4, 4);
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+} */
+
+
+.new-request-container {
+  max-width: 700px;
+ 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  width: 80%; 
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* .new-request-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+} */
+
+
+.new-request-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+
+.feedback {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback:hover {
+  background-color: #e2e6ea;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+.uploadImg {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.uploadImg:hover {
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.approve-btn,
+.cancel-btn {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.approve-btn {
+  background-color: green;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: red;
+  color: white;
+}
+
+.approve-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+
+.feedback h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.success-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: green;
+  margin-bottom: 1rem;
+}
+
+/* 
+.go-to-requests-btn {
+  background-color: #4CAF50;
+  color: white;
+} */
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 450px;
+  max-width: 100%;
+  margin: auto;
+  text-align: center; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px; 
+}
+
+.modal-body {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.success-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon {
+  font-size: 3.5rem;
+  color: #4CAF50; 
+  margin-bottom: 15px; 
+  animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.modal-footer {
+  display: block;
+  justify-content: center;
+  gap: 15px; 
+  margin-top: 20px;
+}
+
+.approve-btn,
+.cancel-btn,
+.go-to-requests-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px; 
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.approve-btn {
+  background-color: #28a745; 
+  color: white;
+}
+
+.approve-btn:hover {
+  background-color: #218838; 
+  transform: translateY(-3px); 
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333; 
+  transform: translateY(-3px);
+}
+
+.go-to-requests-btn {
+
+  background-color: #17a2b8; 
+  color: white;
+}
+
+.go-to-requests-btn:hover {
+  background-color: #138496; 
+  transform: translateY(-3px);
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7); 
+}

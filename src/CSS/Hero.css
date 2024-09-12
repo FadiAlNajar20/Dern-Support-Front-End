@@ -1,0 +1,50 @@
+/* Custom CSS for slick dots */
+.custom-dots {
+  position: absolute;
+  bottom: 20px;
+  /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: auto;
+  /* Adjust to fit content */
+  z-index: 10;
+  /* Ensure dots are above other content */
+}
+
+.custom-dots li {
+  margin: 0;
+}
+
+.custom-dots button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  opacity: 0.6;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.custom-dots .slick-active button {
+  background-color: #ffffff;
+  /* Change to desired active color */
+  opacity: 1;
+}
+
+/* Container for dots */
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  /* Adjust position as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  /* Full width to center dots */
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  /* Ensure dots are on top */
+}
