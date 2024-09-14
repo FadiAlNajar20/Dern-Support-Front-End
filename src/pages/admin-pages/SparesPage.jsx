@@ -51,6 +51,9 @@ const UpdateSpareForm = ({ spare, onSave }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="text-center text-2xl font-bold">
+       <h1>Edit Spare</h1>
+      </div>
       <div>
         <label className="block text-sm font-medium">Name:</label>
         <input

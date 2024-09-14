@@ -9,6 +9,7 @@ function ServiceModal({ service, onClose, onSubmit }) {
   const [issuedescription, setIssueDescription] = useState(service.issuedescription);
 
 
+console.log(onSubmit);
 
   const handleSubmit = (e) => {
 
@@ -21,7 +22,6 @@ function ServiceModal({ service, onClose, onSubmit }) {
       maintenancetime,
       issuedescription,
     });
-
  
   };
 
@@ -97,14 +97,14 @@ function ServiceModal({ service, onClose, onSubmit }) {
             <div className="flex justify-end space-x-4 mt-6">
               <button
                 type="button"
-                className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-600"
                 onClick={onClose}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                className="bg-indigo-900 px-4 py-2 text-white hover:bg-indigo-100 "
               >
                 Submit
               </button>

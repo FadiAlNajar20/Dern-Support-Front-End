@@ -6,6 +6,7 @@ import { useDeleteService, useSeriveces, useUpdateService } from "../../hooks/us
 import Loading from "../../components/Loading";
 import NotFound from "../NotFound";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function ViewAllServices() {
   const updateMutation = useUpdateService();
@@ -36,14 +37,40 @@ function ViewAllServices() {
     ? data.filter((service) => service.category === filterCategory)
     : data;
 
-  const handleDelete = (id) => {
-    deleteMutation.mutate(id, {
-      onSuccess: () => {
-        setDeleteMessage(true);
-        refetch(); // Refetch services data after successful deletion
-      }
-    });
-  };
+    const handleDelete = (id) => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteMutation.mutate(id, {
+            onSuccess: () => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'The service has been deleted.',
+                timer: 3000,
+                showConfirmButton: false,
+              });
+              refetch(); // Refetch services data after successful deletion
+            },
+            onError: () => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Delete Failed',
+                text: 'There was a problem deleting the service.',
+              });
+            }
+          });
+        }
+      });
+    };
+    
 
   const handleEdit = (service) => {
     setEditService(service);
@@ -52,13 +79,26 @@ function ViewAllServices() {
   const handleUpdateService = (updatedService) => {
     updateMutation.mutate(updatedService, {
       onSuccess: () => {
-        setSuccessMessage(true);
+        Swal.fire({
+          icon: 'success',
+          title: 'Service Updated',
+          text: 'The service has been updated successfully!',
+          timer: 3000, // Auto close after 3 seconds
+          showConfirmButton: false,
+        });
         refetch(); // Refetch services data after successful update
         setEditService(null);
-        setTimeout(() => setSuccessMessage(false), 5000);
+      },
+      onError: () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Update Failed',
+          text: 'There was a problem updating the service.',
+        });
       }
     });
   };
+  
   if (isLoading) {
     return <Loading />;
   }
@@ -141,7 +181,7 @@ function ViewAllServices() {
         <Modal
           service={editService}
           onClose={() => setEditService(null)}
-          onSave={handleUpdateService}
+          onSubmit={handleUpdateService}
         />
       )}
 

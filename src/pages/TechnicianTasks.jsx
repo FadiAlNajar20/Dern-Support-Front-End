@@ -31,6 +31,8 @@ const TechnicianTasks = () => {
   } = useTechnicianCreatedDate();
   const { data: name, isNameLoading, isNameError } = useTechnicianName();
   const currentDate = new Date();
+console.log(assignedRequests);
+// console.log(assignedRequests);
 
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(
@@ -191,13 +193,11 @@ const TechnicianTasks = () => {
         </section>
 
 
-
-        {/* Table Section */}
+ 
         <table className="w-full h-fit bg-white border border-gray-300 rounded-lg overflow-hidden">
           <thead>
             <tr>
               {headers.map((header, index) => {
-                // تخصيص ألوان الأعمدة
                 const columnColor = index % 2 === 0 ? "bg-blue-200" : "bg-green-200";
                 return (
                   <th

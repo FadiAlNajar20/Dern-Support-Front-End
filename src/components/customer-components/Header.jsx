@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
-import logo from "../../../public/dern-logo.png";
 import NotificationComponent from "../NotificationComponent";
 import LogoutButton from "../LogoutButton";
 
@@ -42,7 +41,6 @@ export default function Header(props) {
         <div className="flex items-center gap-3 sm:gap-10 text-white ml-5 text-2xl">
           <Link to="/">
             Dern-Support
-            {/* <img src={logo} alt="Dern Support Logo" className="h-14 lg:h-16" /> */}
           </Link>
         </div>
 
@@ -52,9 +50,8 @@ export default function Header(props) {
             {links.map((link) => (
               <li
                 key={link.id}
-                className={`text-gray-50 pt-2 cursor-pointer hover:text-sky-500 ${
-                  location.pathname === link.url ? "text-sky-500" : ""
-                }`}
+                className={`text-gray-50 pt-2 cursor-pointer hover:text-sky-500 ${location.pathname === link.url ? "text-sky-500" : ""
+                  }`}
               >
                 <Link to={link.url}>{link.title}</Link>
               </li>
@@ -69,7 +66,7 @@ export default function Header(props) {
 
         {/* Logout Button */}
         {user ? (
-          <LogoutButton onClick={() => setOpen(false)}/>
+          <LogoutButton onClick={() => setOpen(false)} />
         ) : (
           <div className="flex items-center gap-3 relative">
             {/* Dropdown Button */}
@@ -120,7 +117,8 @@ export default function Header(props) {
         {/* Logo */}
         <div className="flex items-center gap-3 sm:gap-10 -ml-2">
           <Link to="/">
-            <img src={logo} alt="Dern Support Logo" className="h-12 lg:h-14" />
+            Dern-Support
+            {/* <img src={logo} alt="Dern Support Logo" className="h-12 lg:h-14" /> */}
           </Link>
         </div>
 
@@ -136,18 +134,16 @@ export default function Header(props) {
 
       {/* Mobile Menu */}
       <nav
-        className={`lg:hidden  text-white fixed z-40 w-full bg-customLight transition-transform duration-300 ${
-          open ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className={`lg:hidden  text-white fixed z-40 w-full bg-customLight transition-transform duration-300 ${open ? "translate-y-0" : "-translate-y-full"
+          }`}
       >
         {/* Mobile Menu Links */}
         <ul className="flex flex-col gap-4 pt-24 pb-6 text-center font-robotoSlab">
           {links.map((link) => (
             <li
               key={link.id}
-              className={`hover:text-sky-600 border-b-2 pb-2 border-sky-800 ${
-                location.pathname === link.url ? "text-sky-500" : ""
-              }`}
+              className={`hover:text-sky-600 border-b-2 pb-2 border-sky-800 ${location.pathname === link.url ? "text-sky-500" : ""
+                }`}
             >
               <Link
                 to={link.url}
@@ -160,7 +156,7 @@ export default function Header(props) {
           ))}
           <li className="flex justify-center">
             {user ? (
-              <LogoutButton onClick={() => setOpen(false)}/> ) : (
+              <LogoutButton onClick={() => setOpen(false)} />) : (
               <div className="relative">
                 {/* Dropdown Button */}
                 <button
