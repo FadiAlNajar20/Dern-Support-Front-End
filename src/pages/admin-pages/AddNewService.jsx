@@ -13,6 +13,7 @@ function AddNewService(id) {
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState({});
   const newServiceMutation=useNewService();
+console.log(initialValues);
 
 console.log(location.state.service);
 

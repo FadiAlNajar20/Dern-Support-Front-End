@@ -25,6 +25,8 @@ export default function AdminViewByID() {
       image: user.image,
       date: user.createddate,
     };
+    console.log(user);
+    
     navigate("/AddNewService", { state: { service: newService } });
   };
 

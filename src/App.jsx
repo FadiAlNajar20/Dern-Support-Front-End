@@ -15,7 +15,8 @@ import ScrollToTop from "./functions/ScrollToTop";
 import ArticleByID from "./pages/customer-pages/ArticleByID";
 import NewRequest from "./pages/customer-pages/NewRequest/newRequest";
 import ViewAllRequests from "./pages/customer-pages/ViewAllRequests";
-import Dashbord from "./pages/admin-pages/Dashbord";
+// import Dashbord from "./pages/admin-pages/Dashbord";
+import AdminViewAllRequest from "./pages/admin-pages/AdminViewAllRequest";
 import AdminViewByID from './pages/admin-pages/AdminViewByID';
 import TechnicainTasks from "./pages/TechnicianTasks";
 import "slick-carousel/slick/slick.css";
@@ -196,7 +197,7 @@ export default function App() {
             path="/support-requests/getAll"
             element={
               <Layout>
-                <Dashbord />
+                <AdminViewAllRequest />
               </Layout>
             }
           />
@@ -233,7 +234,7 @@ export default function App() {
             path="/dashbord/create-new-article"
             element={<CreateNewArticle />}
           />
-          <Route path="/support-requests/getAll" element={<Dashbord />} />
+          <Route path="/support-requests/getAll" element={<AdminViewAllRequest />} />
           <Route
             path="/support-requests/getAll/:id"
             element={<AdminViewByID />}

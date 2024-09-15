@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomTable = ({ headers, data, renderRow, isWhite = true }) => {
   return (
-  <table className={`min-w-full bg-white shadow-lg rounded-lg overflow-hidden`}>
+  <table className={`w-full bg-white shadow-lg rounded-lg overflow-hidden`}>
 
       <thead className="bg-indigo-700 text-white">
         <tr>

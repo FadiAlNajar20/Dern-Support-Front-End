@@ -56,14 +56,13 @@ const useNewService = () => {
   return useMutation({
 
     mutationFn: async (requestData) => {
+   console.log(requestData);
    
       const response = await axiosInstance.post("/admin/services/add", requestData,{
         headers: {
         "Content-Type": "multipart/form-data"}
 
-      });
-      
-    
+      });    
       return response.data;
     },
     onSuccess: (data) => {
@@ -74,8 +73,6 @@ const useNewService = () => {
     },
   });
 };
-
-
 
 // /admin/support-requests/getAll
 const usesSpportRequestsGetAll = () => {

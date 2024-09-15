@@ -58,7 +58,7 @@ export default function Header(props) {
             ))}
             {user && (
               <li>
-                <NotificationComponent />
+                {/* <NotificationComponent /> */}
               </li>
             )}
           </ul>
@@ -113,9 +113,9 @@ export default function Header(props) {
       </nav>
 
       {/* Mobile Header Bar */}
-      <nav className="lg:hidden flex items-center justify-between py-4 bg-customLight fixed top-0 z-50 w-full shadow-md">
+      <nav className="lg:hidden flex items-center justify-between py-4 bg-indigo-500 fixed top-0 z-50 w-full shadow-md">
         {/* Logo */}
-        <div className="flex items-center gap-3 sm:gap-10 -ml-2">
+        <div className="flex items-center gap-3 sm:gap-10 -ml-2 ml-8 text-white">
           <Link to="/">
             Dern-Support
             {/* <img src={logo} alt="Dern Support Logo" className="h-12 lg:h-14" /> */}
@@ -134,7 +134,7 @@ export default function Header(props) {
 
       {/* Mobile Menu */}
       <nav
-        className={`lg:hidden  text-white fixed z-40 w-full bg-customLight transition-transform duration-300 ${open ? "translate-y-0" : "-translate-y-full"
+        className={`lg:hidden text-white fixed z-40 w-full bg-indigo-500 transition-transform duration-300 ${open ? "translate-y-0" : "-translate-y-full"
           }`}
       >
         {/* Mobile Menu Links */}

@@ -20,7 +20,7 @@ function NewRequest() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [feedback, setFeedback] = useState({
-    estimatedCost: 0,
+    estimatedCost: 50,
     estimatedTime: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false); // State for feedback modal visibility
@@ -124,7 +124,7 @@ function NewRequest() {
             <p>{feedback.error}</p>
           ) : (
             <>
-              <p>Estimated Cost: {feedback.estimatedCost}</p>
+              <p>Estimated Cost: 50</p>
               <p>Estimated Time: {feedback.estimatedTime}</p>
             </>
           )}
