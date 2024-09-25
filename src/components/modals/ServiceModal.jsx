@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 
-
 function ServiceModal({ service, onClose, onSubmit }) {
   const [title, setTitle] = useState(service.title);
   const [category, setCategory] = useState(service.category);
   const [actualcost, setActualCost] = useState(service.actualcost);
   const [maintenancetime, setTimeMinutes] = useState(service.maintenancetime);
   const [issuedescription, setIssueDescription] = useState(service.issuedescription);
-
-
-console.log(onSubmit);
-
   const handleSubmit = (e) => {
-
     e.preventDefault();
     onSubmit({
       ...service,
@@ -22,17 +16,14 @@ console.log(onSubmit);
       maintenancetime,
       issuedescription,
     });
- 
   };
 
   return (
     <>
- 
       <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
         <div className="bg-white p-6 rounded-lg shadow-lg w-[700px] relative">
           <h2 className="text-2xl font-bold mb-4 text-center">Edit Service</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Title Input */}
             <div>
               <label className="block font-semibold mb-1">Title</label>
               <input
@@ -43,8 +34,6 @@ console.log(onSubmit);
                 required
               />
             </div>
-
-            {/* Category Select */}
             <div>
               <label className="block font-semibold mb-1">Category</label>
               <select
@@ -57,8 +46,6 @@ console.log(onSubmit);
                 <option value="hardware">Hardware</option>
               </select>
             </div>
-
-            {/* Actual Cost Input */}
             <div>
               <label className="block font-semibold mb-1">Actual Cost</label>
               <input
@@ -69,8 +56,6 @@ console.log(onSubmit);
                 required
               />
             </div>
-
-            {/* Time Minutes Input */}
             <div>
               <label className="block font-semibold mb-1">Time (Minutes)</label>
               <input
@@ -81,8 +66,6 @@ console.log(onSubmit);
                 required
               />
             </div>
-
-            {/* Issue Description Textarea */}
             <div>
               <label className="block font-semibold mb-1">Issue Description</label>
               <textarea
@@ -92,8 +75,6 @@ console.log(onSubmit);
                 required
               />
             </div>
-
-            {/* Action Buttons */}
             <div className="flex justify-end space-x-4 mt-6">
               <button
                 type="button"
@@ -112,9 +93,6 @@ console.log(onSubmit);
           </form>
         </div>
       </div>
-
-  
- 
     </>
   );
 }

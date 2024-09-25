@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -15,14 +14,12 @@ import ScrollToTop from "./functions/ScrollToTop";
 import ArticleByID from "./pages/customer-pages/ArticleByID";
 import NewRequest from "./pages/customer-pages/NewRequest/newRequest";
 import ViewAllRequests from "./pages/customer-pages/ViewAllRequests";
-// import Dashbord from "./pages/admin-pages/Dashbord";
 import AdminViewAllRequest from "./pages/admin-pages/AdminViewAllRequest";
 import AdminViewByID from './pages/admin-pages/AdminViewByID';
 import TechnicainTasks from "./pages/TechnicianTasks";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DashboardAnalysis from "./pages/admin-pages/Analysis";
-// import VerifyEmailPage from "./pages/VerifyEmailPage";
 
 import AddNewService from "./pages/admin-pages/AddNewService";
 import CreateTechnicianAccount from "./pages/admin-pages/CreateTechnicianAccount";
@@ -38,7 +35,6 @@ import ServiceInAdmin from "./pages/admin-pages/ServiceInAdmin";
 import ReportsList from "./pages/admin-pages/Reports";
 import Sidebar from "./components/Sidebar/Sidebar";
 import NotificationComponent from "./components/NotificationComponent";
-import LogoutButton from "./components/LogoutButton";
 
 
 export default function App() {
@@ -49,17 +45,6 @@ export default function App() {
 
     return (
       <div className="flex flex-col h-screen">
-        {/* <header className="w-full p-4 bg-gray-800 text-white fixed top-0 left-0 z-10 flex justify-between items-center">
-          <h1 className="text-xl">dashboard</h1>
-          <div className="flex items-center space-x-4">
-            <NotificationComponent />
-            <LogoutButton onClick={() => {
-                logoutUser();
-                setOpen(false); 
-                // Ensure menu closes on logout
-              }}/>
-          </div>
-        </header> */}
   
         <div className="flex flex-1" style={{ paddingTop: "4rem" }}>
           {userType=="admin"?<Sidebar style={{ top: "50rem" }} />:<></>}
@@ -77,15 +62,11 @@ export default function App() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // Determine the role based on the path
-  // Determine if the current path should show the header and footer
-
   const isHome = currentPath === "/";
   const isCustomer = isHome || currentPath.startsWith("/customers");
   const isAdmin = currentPath.startsWith("/admin");
   const isTechnician = currentPath.startsWith("/technician");
 
-  // Check for specific paths where the header and footer should be displayed
   const isArticlesOrServices =
     currentPath.startsWith("/articles") ||
     currentPath.startsWith("/services") ||
@@ -96,7 +77,6 @@ export default function App() {
 
   return (
     <div className="font-poppins w-full h-full flex flex-col justify-between min-h-screen">
-      {/* </div> <div className="font-poppins w-full h-full flex flex-col justify-between"> */}
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
@@ -112,7 +92,6 @@ export default function App() {
       />
       <ScrollToTop />
 
-      {/* Render Header for customer role, home, articles, and services */}
       {(isCustomer || isHome || isArticlesOrServices) && <Header />}
 {/*  */}
       <main className="flex flex-col justify-center h-full grow">
@@ -160,7 +139,6 @@ export default function App() {
               </Layout>
             }
           />
-          {/* <Route path="/verify-email" element={<VerifyEmailPage />} /> */}
           <Route
             path="/technicians/createAccount"
             element={
@@ -250,8 +228,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-
-      {/* Render Header for customer role, home, articles, and services */}
       {(isCustomer || isHome || isArticlesOrServices) && <Footer />}
     </div>
   );

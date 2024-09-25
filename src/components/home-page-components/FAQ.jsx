@@ -45,10 +45,6 @@ export default function FAQ() {
   return (
     <div className="container mx-auto mb-24">
       <div className="container mx-auto lg:px-32 px-4 mb-10">
-        {/* <h2 className="max-w-3xl text-2xl font-bold text-center text-red-500 mb-10">
-          Frequently Asked Questions about{" "}
-          <span className="border-b-2 border-black">Dern-Support</span>
-        </h2> */}
         <Seperator
           heading="FAQ"
           text="Find answers to the most common questions about our services and how we can assist you."

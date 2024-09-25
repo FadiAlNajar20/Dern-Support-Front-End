@@ -5,57 +5,48 @@ import Field from "../components/Field";
 import { InputTypes } from "../utils/Constants";
 
 export default function Login() {
-  // Create a reference to the login form
   const loginReference = useRef(null);
   const { loginUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // State to store userType
   const [userType, setUserType] = useState("");
-
-  // Effect to extract userType from URL query params
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const type = params.get('userType');
     if (type) {
       setUserType(type);
-    console.log(type);
+      console.log(type);
     }
   }, [location.search]);
-
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData(loginReference.current);
     const data = Object.fromEntries(formData);
     data.userType = userType;
-  
+
     console.log(userType); // Debugging
-  
+
     try {
       const response = await loginUser(data);
       console.log(response); // Debugging
-  
+
       if (response.data.success) {
         localStorage.setItem("Email", data.Email);
         loginReference.current.reset();
-        if(data.userType==="coustomers"){
+        if (data.userType === "coustomers") {
           navigate("/services");
         }
-        else if(data.userType==="admin"){
+        else if (data.userType === "admin") {
           navigate("/support-requests/getAll");
         }
-      else  if(data.userType=="technician"){
+        else if (data.userType == "technician") {
           navigate("/technicainTasks");
         }
-        else{
+        else {
           navigate("/");
         }
-
-
-      
       } else {
         console.error("Login failed");
       }
@@ -79,13 +70,8 @@ export default function Login() {
           onSubmit={handleSubmit}
           ref={loginReference}
         >
-          {/* Custom Field component for email input */}
           <Field label="Email:" type={InputTypes.EMAIL} name="Email" />
-
-          {/* Custom Field component for password input */}
           <Field label="Password:" type={InputTypes.PASSWORD} name="Password" />
-
-          {/* Submit button */}
           <button
             type="submit"
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 w-full rounded-lg shadow-md hover:shadow-lg transition-all"
@@ -93,8 +79,6 @@ export default function Login() {
             Login
           </button>
         </form>
-
-        {/* Link to registration page */}
         <p className="mt-4 text-center text-gray-600">
           Don't have an account?{" "}
           <Link

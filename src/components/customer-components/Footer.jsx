@@ -32,7 +32,6 @@ const Footer = () => {
     <footer className="bg-indigo-500 text-gray-400 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
-          {/* Logo and Description */}
           <div className="w-full lg:w-1/3 md:w-1/2 sm:w-full mb-8 pr-5 text-center sm:text-left">
             <div className="flex justify-center sm:justify-start mb-4 flex items-center gap-3 sm:gap-10 text-white text-2xl" >
               <Link to="/home">
@@ -46,8 +45,6 @@ const Footer = () => {
               installation services.
             </p>
           </div>
-
-          {/* Quick Links */}
           <div className="w-full lg:w-1/6 md:w-1/4 sm:w-1/2 mb-8 text-center sm:text-left">
             <h5 className="text-lg font-semibold text-white mb-4">
               Quick Links
@@ -65,8 +62,6 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
-          {/* Head Office */}
           <div className="w-full lg:w-1/4 md:w-1/4 sm:w-1/2 mb-8 text-center sm:text-left">
             <h5 className="text-lg font-semibold text-white mb-4 ">
               Head Office
@@ -76,8 +71,6 @@ const Footer = () => {
             <p className="text-white">Email: Info@DernSupport.com</p>
             <p className="text-white">Company Time: 9am - 7pm</p>
           </div>
-
-          {/* Newsletter */}
           <div className="w-full lg:w-1/4 md:w-1/2 sm:w-full mb-8 text-center sm:text-left">
             <h5 className="text-lg font-semibold text-white mb-4">
               Newsletter
@@ -94,8 +87,6 @@ const Footer = () => {
               </button>
             </div>
           </div>
-
-          {/* Footer Bottom */}
           <div className="w-full text-center border-t border-gray-700 pt-4">
             <p className="flex items-center justify-center gap-1 text-gray-400">
               <i className="ri-copyright-line"></i>Copyright {year}, Developed

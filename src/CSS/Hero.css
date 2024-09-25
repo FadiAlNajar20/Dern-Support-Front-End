@@ -2,16 +2,13 @@
 .custom-dots {
   position: absolute;
   bottom: 20px;
-  /* Adjust as needed */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
   justify-content: center;
   width: auto;
-  /* Adjust to fit content */
   z-index: 10;
-  /* Ensure dots are above other content */
 }
 
 .custom-dots li {

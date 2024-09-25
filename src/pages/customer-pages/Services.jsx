@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSeriveces } from "../../hooks/useAdminServiceHook";
 import Loading from "../../components/Loading";
-import SearchInput from "../../components/SearchInput";
 import Swal from "sweetalert2";
 
 

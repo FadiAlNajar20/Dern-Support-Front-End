@@ -8,7 +8,6 @@ import { requestStatus } from "../utils/Constants";
 import ReportModal from "../components/modals/ReportModal";
 import Loading from "../components/Loading";
 import LogoutButton from "../components/LogoutButton";
-import Swal from "sweetalert2";
 
 const headers = [
   "Title",
@@ -32,7 +31,6 @@ const TechnicianTasks = () => {
   const { data: name, isNameLoading, isNameError } = useTechnicianName();
   const currentDate = new Date();
 console.log(assignedRequests);
-// console.log(assignedRequests);
 
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(
@@ -106,8 +104,6 @@ console.log(assignedRequests);
 
   return (
     <>
-
-
       {isModalOpen && (
         <ReportModal
           request={selectedIssue}

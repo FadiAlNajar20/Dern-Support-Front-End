@@ -8,7 +8,6 @@ const Explain = ({ id, title, text, image }) => {
           id === "2" ? "lg:flex-row" : "lg:flex-row-reverse"
         }`}
       >
-        {/* Text Section */}
         <div className="lg:w-1/2 lg:order-1 flex flex-col justify-center items-center lg:items-start lg:px-0">
           <h2 className="pl-5 pr-5 pt-5 text-2xl sm:text-3xl lg:text-4xl font-bold text-sky-600 mb-6">
             {title}
@@ -18,8 +17,6 @@ const Explain = ({ id, title, text, image }) => {
             {text}
           </p>
         </div>
-
-        {/* Image Section */}
         <div className="lg:w-1/2 lg:order-2">
           <img
             src={image}

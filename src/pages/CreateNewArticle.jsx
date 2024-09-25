@@ -3,17 +3,13 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
 import { useAddArticle } from "../hooks/adminDashboard";
-
-
 export default function CreateNewArticle() {
-    const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
     const navigate = useNavigate();
-    const { user } = useAuth();
     const { mutate: addArticle, isLoading, isError, isSuccess, error } = useAddArticle();
 
 
@@ -28,15 +24,10 @@ export default function CreateNewArticle() {
             image : image,
             description: description
         }
-        // console.log("Object to send:", obj.Image);
-        
-            
             try {
                 await addArticle(obj);
-                // Redirect or update UI on success
                 navigate("/dashbord/create-new-article"); // Replace with actual redirect path
             } catch (err) {
-                // Error handling
                 console.log("Error publishing article:", err);
             }
     };
@@ -45,7 +36,6 @@ export default function CreateNewArticle() {
         <>
             <div className="flex">
                 <Sidebar />
-
                 <div className="flex flex-col space-y-12 w-full max-w-3xl mx-auto mt-12">
                     <div className="flex flex-col border rounded-lg overflow-hidden bg-white">
                         <div className="p-6">

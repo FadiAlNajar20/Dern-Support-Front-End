@@ -1,8 +1,6 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useAxiosInstance } from "./useAxiosInstance";
 
-
-
 // /admin/support-requests/getAll
 const usesSpportRequestsGetAll = () => {
     const axiosInstance = useAxiosInstance(true);
@@ -157,34 +155,6 @@ const useSupportRequestsTimeAndCost = () => {
           console.error("Error editing service:", error);
         },
       });
-    // console.log("Call the updateTimeAndCost", u);
-    // const obj = {
-    //     id: user?.id,
-    //     maintenanceTime: actualcost,
-    //     actualcost: createddate
-    // }
-    // const updateTimeAndCost = async () => {
-        
-    //     try {
-    //         const res = await axiosInstance.put("/admin/support-requests-timeAndCost/update", u);
-    //         console.log(" updated Time and Cost: ", res.status);
-            
-    //         return res.data;
-    //     } catch (error) {
-    //         console.log("Error updated Time and Cost:", error);
-    //         throw error;
-    //     }
-    // };
-
-    // return useMutation({
-    //     mutationFn: updateTimeAndCost,
-    //     onSuccess: (data) => {
-    //         console.log('Account updated successfully:', data);
-    //     },
-    //     onError: (error) => {
-    //         console.error('Error updated Time and Cost:', error);
-    //     }
-    // });
 };
 
 export { usesSpportRequestsGetAll, useGetAllArticles, useUpdateArticle, useDeleteArticle, useAddArticle, useSupportRequestsTimeAndCost };

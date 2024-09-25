@@ -130,7 +130,6 @@ export default function ServiceByID() {
               Instant support available via DernSupport Now! online assistance
             </li>
           </ul>
-
           <button
             onClick={request}
             className="bg-indigo-500 text-white px-6 py-3 mt-8 rounded-full shadow-lg hover:from-red-600 hover:to-red-700 transition duration-300"

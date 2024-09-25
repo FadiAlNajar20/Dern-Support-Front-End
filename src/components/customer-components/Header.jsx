@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
-import NotificationComponent from "../NotificationComponent";
 import LogoutButton from "../LogoutButton";
 
 export default function Header(props) {
@@ -11,10 +10,7 @@ export default function Header(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user } = useAuth();
   const location = useLocation();
-  const navigate = useNavigate(); // Initialize navigate
-
-  const logout = () => {
-  };
+  const navigate = useNavigate(); 
 
   const links = [
     { id: 1, title: "Home", url: "/" },
@@ -30,12 +26,11 @@ export default function Header(props) {
   }
   const handleUserTypeClick = (userType) => {
     navigate(`/login?userType=${userType}`);
-    setDropdownOpen(false); // Close dropdown after selection
+    setDropdownOpen(false);
   };
 
   return (
     <header className="p-0">
-      {/* Desktop and larger screens */}
       <nav className="hidden lg:flex items-center justify-between py-2 bg-indigo-500 fixed top-0 z-50 w-full shadow-md">
         {/* Logo */}
         <div className="flex items-center gap-3 sm:gap-10 text-white ml-5 text-2xl">
@@ -56,20 +51,12 @@ export default function Header(props) {
                 <Link to={link.url}>{link.title}</Link>
               </li>
             ))}
-            {user && (
-              <li>
-                {/* <NotificationComponent /> */}
-              </li>
-            )}
           </ul>
         </div>
-
-        {/* Logout Button */}
         {user ? (
           <LogoutButton onClick={() => setOpen(false)} />
         ) : (
           <div className="flex items-center gap-3 relative">
-            {/* Dropdown Button */}
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="mr-5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
@@ -112,17 +99,12 @@ export default function Header(props) {
         )}
       </nav>
 
-      {/* Mobile Header Bar */}
       <nav className="lg:hidden flex items-center justify-between py-4 bg-indigo-500 fixed top-0 z-50 w-full shadow-md">
-        {/* Logo */}
         <div className="flex items-center gap-3 sm:gap-10 -ml-2 ml-8 text-white">
           <Link to="/">
             Dern-Support
-            {/* <img src={logo} alt="Dern Support Logo" className="h-12 lg:h-14" /> */}
           </Link>
         </div>
-
-        {/* Burger Menu Button */}
         <button
           className="text-4xl text-white mr-4"
           onClick={() => setOpen(!open)}
@@ -131,13 +113,10 @@ export default function Header(props) {
           {open ? <MdClose /> : <MdMenu />}
         </button>
       </nav>
-
-      {/* Mobile Menu */}
       <nav
         className={`lg:hidden text-white fixed z-40 w-full bg-indigo-500 transition-transform duration-300 ${open ? "translate-y-0" : "-translate-y-full"
           }`}
       >
-        {/* Mobile Menu Links */}
         <ul className="flex flex-col gap-4 pt-24 pb-6 text-center font-robotoSlab">
           {links.map((link) => (
             <li
@@ -158,7 +137,6 @@ export default function Header(props) {
             {user ? (
               <LogoutButton onClick={() => setOpen(false)} />) : (
               <div className="relative">
-                {/* Dropdown Button */}
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="bg-white-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"

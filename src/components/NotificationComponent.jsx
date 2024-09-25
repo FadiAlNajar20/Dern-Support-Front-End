@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { useAuth } from "../contexts/auth";
 
 const NotificationComponent = () => {
- // const { user, logoutUser } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [hasNewNotifications, setHasNewNotifications] = useState(false);

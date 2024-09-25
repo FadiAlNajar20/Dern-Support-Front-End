@@ -10,34 +10,24 @@ export default function Register() {
   const { registerUser } = useAuth(); // Use registerUser function from AuthContext
   const [isIndividual, setIsIndividual] = useState(true); // State to determine user type
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Gather form data
     const formData = new FormData(registerReference.current);
     const data = Object.fromEntries(formData);
-
-    // Add userType to the data based on selection
     data.userType = isIndividual ? "individual" : "company";
 
     try {
-      // Call the registerUser function to handle registration
       await registerUser(data);
 
       registerReference.current.reset();
     } catch (error) {
-      // Log any errors encountered during registration
       console.error("Error during registration:", error);
     }
   };
-
-  // Effect to log user type selection changes
   useEffect(() => {
     console.log(isIndividual);
   }, [isIndividual]);
-
-  // Handle changes in user type selection
   const handleUserTypeChange = (event) => {
     const value = event.target.value;
     setIsIndividual(value === "individual");
@@ -58,7 +48,6 @@ export default function Register() {
           onSubmit={handleSubmit}
           ref={registerReference}
         >
-          {/* Radio buttons for selecting account type */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p className="text-base md:text-lg font-semibold text-gray-700 mb-4 md:mb-0">
               Account Type
@@ -88,9 +77,7 @@ export default function Register() {
             </div>
           </div>
 
-          {/* Form fields in two columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mb-6">
-            {/* Dynamic input field based on account type */}
             <Field
               label={isIndividual ? "Name:" : "Company Name:"}
               type={InputTypes.TEXT}
@@ -99,8 +86,6 @@ export default function Register() {
                 isIndividual ? "Enter your name" : "Enter the company name"
               }
             />
-
-            {/* Static input fields for email, phone number, and passwords */}
             <Field label="Email:" type={InputTypes.EMAIL} name="Email" />
             <Field
               label="Phone Number:"
@@ -119,8 +104,6 @@ export default function Register() {
               type={InputTypes.PASSWORD}
             />
           </div>
-
-          {/* Submit button */}
           <div className="w-full flex justify-center mt-6">
             <button
               type="submit"
@@ -130,8 +113,6 @@ export default function Register() {
             </button>
           </div>
         </form>
-
-        {/* Link to the login page */}
         <p className="mt-6 text-center text-gray-600">
           Already have an account?{" "}
           <Link

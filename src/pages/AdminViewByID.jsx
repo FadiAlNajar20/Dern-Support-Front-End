@@ -1,35 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
 import Sidebar from "../components/Sidebar/Sidebar";
 import { useSupportRequestsTimeAndCost } from "../hooks/adminDashboard";
 import Swal from 'sweetalert2';
-import moment from "moment/moment";
 import { InputTypes } from "../utils/Constants";
 
 export default function AdminViewByID() {
     const [isEditing, setIsEditing] = useState(false);
     const location = useLocation();
-    const user= location.state?.user;
+    const user = location.state?.user;
     const [actualcost, setAcualCost] = useState(user?.actualcost);
     const [maintenanceTime, setMaintenanceTime] = useState(user?.maintenancetime);
-    // const [maintenanceTime, setMaintenanceTime] = useState(moment(user?.maintenancetime).format('YYYY-MM-DD'));
-
     const navigate = useNavigate();
-
-    
-    
-
     const updateTimeandCost = useSupportRequestsTimeAndCost();
- 
-
-
-
-    // if (!user) {
-    //     navigate("/support-requests/getAll");
-    //     return <Loading />;
-    // }
-
     const handleAddToService = () => {
         const newService = {
             id: user?.id,
@@ -41,15 +24,6 @@ export default function AdminViewByID() {
         };
         navigate("/AddNewService", { state: { service: newService } });
     };
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setUser({
-    //         ...user,
-    //         [name]: value
-    //     });
-    // };
-
     const handleEdit = () => {
         setIsEditing(true);
     };
@@ -63,8 +37,6 @@ export default function AdminViewByID() {
                 maintenanceTime: maintenanceTime,
                 actualcost: actualcost
             };
-         
-            
             await updateTimeandCost?.mutateAsync(updatedTimeAndCost);
 
             Swal.fire(
@@ -73,11 +45,9 @@ export default function AdminViewByID() {
                 "success"
             );
             setIsEditing(false);
-            // refetch();
-
         } catch (error) {
-         
-            
+
+
             Swal.fire(
                 "Error!",
                 "There was an issue updating Time and Cost.",
@@ -143,7 +113,7 @@ export default function AdminViewByID() {
                                                     {actualcost}
                                                 </td>
                                                 <td className="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                                    {maintenanceTime && "Hours" || "-"} 
+                                                    {maintenanceTime && "Hours" || "-"}
                                                 </td>
                                                 <td>
                                                     {user?.status === "completed" && (
@@ -180,62 +150,62 @@ export default function AdminViewByID() {
                         </div>
                     </div>
 
-                    {user?.requesttype=="NewRequest"&&
+                    {user?.requesttype == "NewRequest" &&
                         <div className="mt-8">
-                        <div className="p-6 bg-white rounded-md shadow-md">
-                            <h2 className="text-lg font-semibold text-gray-700 capitalize mx-auto max-w-4xl">
-                                Edit The Information
-                            </h2>
-                            <form onSubmit={handleSave} className="mx-auto max-w-4xl">
-                                <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                                    <div>
-                                        <label className="text-gray-700" htmlFor="actualcost">Cost</label>
-                                        <input
-                                            id="actualcost"
-                                            name="actualcost"
-                                            value={actualcost}
-                                            onChange={(e)=>setAcualCost(e.target.value)}
-                                            className={`w-full mt-2 p-3 border rounded-md ${isEditing ? 'focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500' : 'bg-gray-100 cursor-not-allowed read-only:bg-gray-100'}`}
-                                            type={InputTypes.NUMBER}
-                                            disabled={!isEditing}
-                                        />
-                                    </div>
-
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-1">
-                                            <label className="text-gray-700" htmlFor="date">Time</label>
+                            <div className="p-6 bg-white rounded-md shadow-md">
+                                <h2 className="text-lg font-semibold text-gray-700 capitalize mx-auto max-w-4xl">
+                                    Edit The Information
+                                </h2>
+                                <form onSubmit={handleSave} className="mx-auto max-w-4xl">
+                                    <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                        <div>
+                                            <label className="text-gray-700" htmlFor="actualcost">Cost</label>
                                             <input
-                                                id="date"
-                                                name="date"
-                                                value={maintenanceTime}
-                                                onChange={(e)=>setMaintenanceTime(e.target.value)}
-                                                className={`w-full mt-2 p-3 border rounded-md ${isEditing ? 'focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500' : 'bg-gray-100 cursor-not-allowed'}`}
+                                                id="actualcost"
+                                                name="actualcost"
+                                                value={actualcost}
+                                                onChange={(e) => setAcualCost(e.target.value)}
+                                                className={`w-full mt-2 p-3 border rounded-md ${isEditing ? 'focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500' : 'bg-gray-100 cursor-not-allowed read-only:bg-gray-100'}`}
                                                 type={InputTypes.NUMBER}
                                                 disabled={!isEditing}
                                             />
                                         </div>
-                                        <div className="mt-8">
-                                            {isEditing ? (
-                                                <button
-                                                    type="submit"
-                                                    className="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                                                >
-                                                    Save
-                                                </button>
-                                            ) : (
-                                                <span
-                                                    className="cursor-pointer px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                                                    onClick={handleEdit}
-                                                >
-                                                    Edit
-                                                </span>
-                                            )}
+
+                                        <div className="flex items-center space-x-4">
+                                            <div className="flex-1">
+                                                <label className="text-gray-700" htmlFor="date">Time</label>
+                                                <input
+                                                    id="date"
+                                                    name="date"
+                                                    value={maintenanceTime}
+                                                    onChange={(e) => setMaintenanceTime(e.target.value)}
+                                                    className={`w-full mt-2 p-3 border rounded-md ${isEditing ? 'focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500' : 'bg-gray-100 cursor-not-allowed'}`}
+                                                    type={InputTypes.NUMBER}
+                                                    disabled={!isEditing}
+                                                />
+                                            </div>
+                                            <div className="mt-8">
+                                                {isEditing ? (
+                                                    <button
+                                                        type="submit"
+                                                        className="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                                                    >
+                                                        Save
+                                                    </button>
+                                                ) : (
+                                                    <span
+                                                        className="cursor-pointer px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                                                        onClick={handleEdit}
+                                                    >
+                                                        Edit
+                                                    </span>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>}
+                                </form>
+                            </div>
+                        </div>}
                 </div>
             </div>
         </>

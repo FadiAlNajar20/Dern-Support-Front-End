@@ -50,7 +50,6 @@ export default function Testimonials() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full">
               <div id="quote-carousel" className="relative">
-                {/* Bottom Carousel Indicators */}
                 <ol className="flex justify-center items-center mb-4">
                   {testimonials.map((testimonial, index) => (
                     <li
@@ -74,7 +73,6 @@ export default function Testimonials() {
                     </li>
                   ))}
                 </ol>
-                {/* Carousel Slides / Quotes */}
                 <div className="text-center space-y-8">
                   {testimonials.map((testimonial, index) => (
                     <div
