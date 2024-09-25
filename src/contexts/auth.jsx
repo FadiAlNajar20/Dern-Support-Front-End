@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
         );
 
         // Redirect user to the email verification page
-        navigate("/verify-email");
+        navigate("/");
       } else {
         toast.error(res.data.msg); // Display error toast if registration fails
       }

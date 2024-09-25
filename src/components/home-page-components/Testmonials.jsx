@@ -45,7 +45,7 @@ export default function Testimonials() {
         className="mb-20 testimonials text-center relative py-[100px] bg-cover bg-center bg-no-repeat text-white"
         style={{ backgroundImage: "url(../img/testbcg.jpg)" }}
       >
-        <div className="absolute inset-0 bg-customLight opacity-70"></div>
+        <div className="absolute inset-0 bg-indigo-500 opacity-70"></div>
         <div className="container mx-auto relative">
           <div className="flex flex-wrap justify-center">
             <div className="w-full">

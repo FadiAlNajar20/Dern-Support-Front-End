@@ -1,52 +1,35 @@
-import React from "react";
-
-
-
 function WhoWeAreSection() {
   return (
-
     <div className="">
+      {/* Heading section */}
       <div className="flex items-center justify-center pt-10">
         <div className="relative inline-block">
-          <span className="text-2xl md:text-4xl font-bold ">
+          <span className="text-2xl md:text-4xl font-bold">
             About Us
           </span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-600 rounded-full" />
         </div>
       </div>
 
-      <section className="py-24 relative ">
+      {/* Main content section */}
+      <section className="py-24 relative w-full text-center mx-auto">
         <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
-          <div className="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
-            <div className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
-              <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                <img
-                  className=" rounded-xl object-cover"
-                  src="https://cdn.arageek.com/magazine/2021/04/encyclopedia-%D8%B5%D9%8A%D8%A7%D9%86%D8%A9-%D8%A7%D9%84%D9%83%D9%88%D9%85%D8%A8%D9%8A%D9%88%D8%AA%D8%B1%D8%A7%D8%AA.jpg"
-                  alt="about Us image"
-                />
-              </div>
-              <img
-                className="sm:ml-0 ml-auto rounded-xl object-cover"
-                src="https://smouhaacademy.net/wp-content/uploads/2022/11/post_12.jpg"
-                alt="about Us image"
-              />
-            </div>
-            <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
-              <div className="w-full flex-col justify-center items-start gap-8 flex">
-                <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                  <h2 className="text-gray-900 text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+          <div className="w-full flex items-center justify-center gap-12 flex-col mx-auto">
+            {/* Text content */}
+            <div className="w-full flex flex-col justify-center items-center gap-10 text-center mx-auto">
+              <div className="w-full flex-col justify-center items-center gap-8 flex text-center mx-auto">
+                <div className="w-full flex-col justify-center text-center items-center gap-3 flex mx-auto">
+                  <h2 className="text-gray-900 text-4xl font-bold font-manrope leading-normal text-center mx-auto">
                     Empowering Each Other to Succeed
                   </h2>
-                  <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                    Every project we've undertaken has been a collaborative effort,
-                    where every person involved has left their mark. Together, we've
-                    not only constructed buildings but also built enduring connections
-                    that define our success story.
+                  <p className="text-gray-500 text-base font-normal leading-relaxed text-center mx-auto">
+                    Every project we've undertaken has been a collaborative effort, where every person involved has left their mark. Together, we've not only constructed buildings but also built enduring connections that define our success story.
                   </p>
                 </div>
-                <div className="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
-                  <div className="flex-col justify-start items-start inline-flex">
+
+                {/* Stats Section */}
+                <div className="w-full flex justify-center items-center sm:gap-10 gap-5 text-center mx-auto">
+                  <div className="flex-col justify-center items-center inline-flex">
                     <h3 className="text-gray-900 text-4xl font-bold font-manrope leading-normal">
                       33+
                     </h3>
@@ -54,7 +37,7 @@ function WhoWeAreSection() {
                       Years of Experience
                     </h6>
                   </div>
-                  <div className="flex-col justify-start items-start inline-flex">
+                  <div className="flex-col justify-center items-center inline-flex">
                     <h4 className="text-gray-900 text-4xl font-bold font-manrope leading-normal">
                       125+
                     </h4>
@@ -62,7 +45,7 @@ function WhoWeAreSection() {
                       Successful Projects
                     </h6>
                   </div>
-                  <div className="flex-col justify-start items-start inline-flex">
+                  <div className="flex-col justify-center items-center inline-flex">
                     <h4 className="text-gray-900 text-4xl font-bold font-manrope leading-normal">
                       52+
                     </h4>
@@ -72,6 +55,8 @@ function WhoWeAreSection() {
                   </div>
                 </div>
               </div>
+
+              {/* Button Section */}
               <button className="sm:w-fit w-full px-3.5 py-2 bg-indigo-600 hover:bg-indigo-800 transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex">
                 <span className="px-1.5 text-white text-sm font-medium leading-6">
                   Read More
@@ -82,8 +67,6 @@ function WhoWeAreSection() {
         </div>
       </section>
     </div>
-
-
   );
 }
 

@@ -18,24 +18,23 @@ export default function CustomCards() {
         <section className="p-4 md:p-8">
           <div className="mx-auto max-w-5xl mb-20">
             <Link
-              to="/services"
+              to="#about"
               heading="About"
               subheading="Learn what we do here"
-              imgSrc="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-computer-fixing-service-or-maintenance-concept-background-wrench-on-computer-keyboard-image_15745840.jpg"
+              imgSrc="https://www.shutterstock.com/image-photo/service-support-customer-help-call-260nw-2512015909.jpg"
+              subheadingStyle={{ color: 'black' }} 
             />
             <Link
-              to="/services"
+              to="#clients"
               heading="Clients"
               subheading="We work with great people"
-              imgSrc="https://img.pikbest.com/ai/illus_our/20230526/f45d89c28617c91fd1301ca534480b89.jpg!sw800"
-              href="#"
+              imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgL1QOp1fsFsmG8YwwEG_ZYoA04UIFaKQpMA&s"
             />
             <Link
-              to="/services"
-              heading="Portfolio"
+              to="#services"
+              heading="Our Service"
               subheading="Our work speaks for itself"
-              imgSrc="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-computer-fixing-service-or-maintenance-concept-background-wrench-on-computer-keyboard-image_15745840.jpg"
-              href="#"
+              imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAcdCX4UjYeWrjGSUBG25uzJjNcdSjR0SbqA&s"
             />
           </div>
         </section>

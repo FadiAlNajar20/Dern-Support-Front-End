@@ -57,3 +57,17 @@ export const useSendFeedback = (requestId) => {
     },
   });
 };
+
+
+export const useGetArticleById = (id) => {
+  const axiosInstance = useAxiosInstance(true); // Assuming this provides an Axios instance
+
+  return useQuery({
+    queryKey: ["GetArticlesById", id], // Unique key with article id
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/common/articles/${id}`);
+      return response.data;
+    },
+    enabled: !!id, // Only run the query if `id` is truthy
+  });
+};

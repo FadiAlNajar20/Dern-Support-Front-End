@@ -16,6 +16,7 @@ export default function DashbordArticlesID() {
   const { refetch } = useGetAllArticles();
   const updateArticleMutation = useUpdateArticle();
   const deleteArticleMutation = useDeleteArticle();
+console.log(info);
 
   const handleEditToggle = async () => {
     if (isEditing) {
@@ -78,16 +79,16 @@ export default function DashbordArticlesID() {
     <>
       <div className="flex justify-center">
         <div className="flex justify-center items-center w-full mt-5 mb-10">
-         
+
           <form className="w-9/12">
-          <div className="flex items-center justify-center mb-20">
-            <div className="relative inline-block">
-              <span className="text-2xl md:text-4xl font-bold">
-                Edite Or Remove Artilce
-              </span>
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-600 rounded-full" />
+            <div className="flex items-center justify-center mb-20">
+              <div className="relative inline-block">
+                <span className="text-2xl md:text-4xl font-bold">
+                  Edite Or Remove Artilce
+                </span>
+                <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-600 rounded-full" />
+              </div>
             </div>
-          </div>
             <div className="text-3xl font-bold mb-4 text-center">
               <h1>{info?.title}</h1>
             </div>

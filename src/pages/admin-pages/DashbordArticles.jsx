@@ -71,15 +71,14 @@ export default function DashbordArticles(props) {
                     </p>
                   </div>
                   <div className="flex justify-end">
-                    {props.flag == "customer" ? <></> : <Link
-                      to={`/dashbord/article/${article?.id}`}
-                      state={{ articles: article }}
-                      className="inline-block text-indigo-600 hover:text-indigo-900 bg-indigo-50 py-2 px-4 rounded-md transition-colors duration-300"
-                    >
-                      Read More
-                    </Link>}
-
-                  </div>
+                      <Link
+                        to={props.flag == "customer" ?`/articles/${article?.id}`:`/dashbord/article/${article?.id}`}
+                        state={{ article: article }}
+                        className="bg-indigo-500 text-white inline-block text-neutralLight  hover:bg-secondary bg-primary py-2 px-4 rounded-md transition-colors duration-300"
+                      >
+                        Read More
+                      </Link>
+                    </div>
                 </div>
               </div>
             ))}

@@ -22,7 +22,7 @@ import TechnicainTasks from "./pages/TechnicianTasks";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DashboardAnalysis from "./pages/admin-pages/Analysis";
-import VerifyEmailPage from "./pages/VerifyEmailPage";
+// import VerifyEmailPage from "./pages/VerifyEmailPage";
 
 import AddNewService from "./pages/admin-pages/AddNewService";
 import CreateTechnicianAccount from "./pages/admin-pages/CreateTechnicianAccount";
@@ -160,7 +160,7 @@ export default function App() {
               </Layout>
             }
           />
-          <Route path="/verify-email" element={<VerifyEmailPage />} />
+          {/* <Route path="/verify-email" element={<VerifyEmailPage />} /> */}
           <Route
             path="/technicians/createAccount"
             element={
