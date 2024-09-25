@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import {
+  useServicesPerDay,
+  useServicesUsageRate,
+  useServicesRatings
+} from '../../hooks/useAnalysisHooks';
 import { Bar, Pie, Line } from 'react-chartjs-2';
-
 import Chart from 'chart.js/auto';
 import { FaDownload } from 'react-icons/fa';
 import generatePDF from '../../helpers/pdfGenerator';
-import { useServicesPerDay, useServicesUsageRate, useServicesRatings } from '../../hooks/useAnalysisHooks';
+import Loading from '../../components/Loading';
 
 const DashboardAnalysis = () => {
   const [requestData, setRequestData] = useState([]);
@@ -17,18 +21,22 @@ const DashboardAnalysis = () => {
 
   useEffect(() => {
     if (!isLoadingServicesPerDay && servicesPerDayData) {
-      setRequestData(servicesPerDayData);
-      setNewServices(servicesPerDayData);
+      setRequestData(servicesPerDayData || []);
+      setNewServices(servicesPerDayData || []);
     }
 
     if (!isLoadingUsageRate && servicesUsageRateData) {
-      setServiceUsage(servicesUsageRateData);
+      setServiceUsage(servicesUsageRateData || []);
     }
 
     if (!isLoadingRatings && servicesRatingsData) {
-      setServiceFeedback(servicesRatingsData);
+      setServiceFeedback(servicesRatingsData || []);
     }
   }, [servicesPerDayData, servicesUsageRateData, servicesRatingsData, isLoadingServicesPerDay, isLoadingUsageRate, isLoadingRatings]);
+
+  if (requestData && isLoadingServicesPerDay && isLoadingUsageRate && isLoadingRatings) {
+    return <Loading />;
+  }
 
   const chartOptions = {
     maintainAspectRatio: false,
@@ -68,7 +76,6 @@ const DashboardAnalysis = () => {
     },
   };
 
-  // Function to generate color based on value ranges
   const getColorForValue = (value, type) => {
     if (type === 'usage') {
       return value > 20 ? 'rgba(75, 192, 192, 0.6)' :
@@ -82,63 +89,62 @@ const DashboardAnalysis = () => {
       return 'rgba(153, 102, 255, 0.6)';
     }
   };
-
   const requestChartData = {
-    labels: requestData?.map((r) => r?.date),
+    labels: requestData.length > 0 ? requestData.map((r) => r?.date) : ['No Data'],
     datasets: [
       {
         label: 'Request Rates',
-        data: requestData?.map((r) => r?.count),
-        backgroundColor: requestData?.map((r) => getColorForValue(r?.count)),
-        borderColor: requestData?.map((r) => getColorForValue(r?.count, 'border')),
+        data: requestData.length > 0 ? requestData.map((r) => r?.count) : [0],
+        backgroundColor: requestData.length > 0 ? requestData.map((r) => getColorForValue(r?.count)) : ['rgba(153, 102, 255, 0.6)'],
+        borderColor: requestData.length > 0 ? requestData.map((r) => getColorForValue(r?.count, 'border')) : ['rgba(153, 102, 255, 1)'],
         borderWidth: 1,
       },
     ],
   };
 
   const serviceUsageData = {
-    labels: serviceUsage?.map((s) => s?.name),
+    labels: serviceUsage.length > 0 ? serviceUsage.map((s) => s?.name) : ['No Data'],
     datasets: [
       {
         label: 'Service Usage Rate',
-        data: serviceUsage?.map((s) => Math.floor(s?.usagerate)),
-        backgroundColor: serviceUsage?.map((s) => getColorForValue(Math.floor(s?.usagerate), 'usage')),
-        borderColor: serviceUsage?.map((s) => getColorForValue(Math.floor(s?.usagerate), 'border')),
+        data: serviceUsage.length > 0 ? serviceUsage.map((s) => Math.floor(s?.usagerate)) : [0],
+        backgroundColor: serviceUsage.length > 0 ? serviceUsage.map((s) => getColorForValue(Math.floor(s?.usagerate), 'usage')) : ['rgba(153, 102, 255, 0.6)'],
+        borderColor: serviceUsage.length > 0 ? serviceUsage.map((s) => getColorForValue(Math.floor(s?.usagerate), 'border')) : ['rgba(153, 102, 255, 1)'],
         borderWidth: 1,
       },
     ],
   };
 
   const serviceFeedbackData = {
-    labels: serviceFeedback?.map((s) => s?.name),
+    labels: serviceFeedback.length > 0 ? serviceFeedback.map((s) => s?.name) : ['No Data'],
     datasets: [
       {
         label: 'Service Ratings',
-        data: serviceFeedback?.map((s) => Math.floor(s?.rating)),
-        backgroundColor: serviceFeedback?.map((s) => getColorForValue(Math.floor(s?.rating), 'feedback')),
-        borderColor: serviceFeedback?.map((s) => getColorForValue(Math.floor(s?.rating), 'border')),
+        data: serviceFeedback.length > 0 ? serviceFeedback.map((s) => Math.floor(s?.rating)) : [0],
+        backgroundColor: serviceFeedback.length > 0 ? serviceFeedback.map((s) => getColorForValue(Math.floor(s?.rating), 'feedback')) : ['rgba(153, 102, 255, 0.6)'],
+        borderColor: serviceFeedback.length > 0 ? serviceFeedback.map((s) => getColorForValue(Math.floor(s?.rating), 'border')) : ['rgba(153, 102, 255, 1)'],
         borderWidth: 1,
       },
     ],
   };
 
   const newServicesData = {
-    labels: newServices?.map((s) => s.date),
+    labels: newServices.length > 0 ? newServices.map((s) => s?.date) : ['No Data'],
     datasets: [
       {
         label: 'New Services',
-        data: newServices?.map((s) => s.count),
+        data: newServices.length > 0 ? newServices.map((s) => s?.count) : [0],
         backgroundColor: 'rgba(153, 102, 255, 0.2)',
         borderColor: 'rgba(153, 102, 255, 1)',
         borderWidth: 1,
       },
     ],
   };
+
   return (
     <div className='flex'>
 
       <div className="w-full min-h-screen p-6 mx-auto">
-        {/* <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Admin Dashboard</h1> */}
         <div className="flex items-center justify-center mb-20">
           <div className="relative inline-block">
             <span className="text-2xl md:text-4xl font-bold">

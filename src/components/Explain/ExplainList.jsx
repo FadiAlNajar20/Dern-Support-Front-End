@@ -7,11 +7,12 @@ import Seperator from "../home-page-components/Seperator";
 const ExplainList = () => {
   return (
     <div className="container mx-auto px-4 ">
-      <Seperator
-        heading="Our Services"
-        text="Expert support for both hardware repairs and software installations—keeping your systems running smoothly and efficiently."
-      />
-
+      <div className="pb-8">
+        <Seperator
+          heading="Our Services"
+          text="Expert support for both hardware repairs and software installations—keeping your systems running smoothly and efficiently."
+        />
+      </div>
       <div className="flex flex-col md:flex-row lg:flex-wrap gap-12 -mt-32">
         <Explain
           id="1"

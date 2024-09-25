@@ -4,12 +4,11 @@ import { FiArrowRight } from "react-icons/fi";
 
 export default function CustomCards() {
   return (
-
     <div className="">
       <>
         <div className="flex items-center justify-center mb-10">
           <div className="relative inline-block mt-10">
-            <span className="text-2xl md:text-4xl font-bold">
+            <span className="text-xl md:text-3xl font-bold text-black">
               Featured Services
             </span>
             <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-600 rounded-full" />
@@ -22,7 +21,6 @@ export default function CustomCards() {
               heading="About"
               subheading="Learn what we do here"
               imgSrc="https://www.shutterstock.com/image-photo/service-support-customer-help-call-260nw-2512015909.jpg"
-              subheadingStyle={{ color: 'black' }} 
             />
             <Link
               to="#clients"
@@ -38,9 +36,7 @@ export default function CustomCards() {
             />
           </div>
         </section>
-
       </>
-
     </div>
   );
 }
@@ -93,7 +89,7 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
             staggerChildren: 0.075,
             delayChildren: 0.25,
           }}
-          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+          className="relative z-10 block text-2xl font-bold text-black transition-colors duration-500 group-hover:text-black md:text-3xl"
         >
           {heading.split("").map((l, i) => (
             <motion.span
@@ -148,7 +144,5 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
         <FiArrowRight className="text-5xl text-neutral-50 bg-[#e5e5e5]" />
       </motion.div>
     </motion.a>
-
-
   );
 };

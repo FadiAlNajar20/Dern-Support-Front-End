@@ -16,7 +16,6 @@ export default function Login() {
     const type = params.get('userType');
     if (type) {
       setUserType(type);
-      console.log(type);
     }
   }, [location.search]);
   const handleSubmit = async (e) => {
@@ -26,17 +25,14 @@ export default function Login() {
     const data = Object.fromEntries(formData);
     data.userType = userType;
 
-    console.log(userType); // Debugging
-
     try {
       const response = await loginUser(data);
-      console.log(response); // Debugging
 
       if (response.data.success) {
         localStorage.setItem("Email", data.Email);
         loginReference.current.reset();
-        if (data.userType === "coustomers") {
-          navigate("/services");
+        if (data.userType === "customers") {
+          navigate("/newRequest");
         }
         else if (data.userType === "admin") {
           navigate("/support-requests/getAll");
