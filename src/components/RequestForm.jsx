@@ -54,116 +54,135 @@ function RequestForm({ onSubmit, loading, flag }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="space-y-6 w-full">
+    <div className="form-group">
+      <label className="block text-gray-700">Issue Title</label>
+      <input
+        type="text"
+        value={Title}
+        onChange={(e) => setIssueTitle(e.target.value)}
+        required
+        className="w-full p-2 border border-gray-300 rounded-md"
+      />
+    </div>
+  
+    <div className="form-group">
+      <label className="block text-gray-700">Issue Description</label>
+      <textarea
+        value={Description}
+        onChange={(e) => setIssueDescription(e.target.value)}
+        required
+        className="w-full p-2 border border-gray-300 rounded-md"
+      />
+    </div>
+  
+    <div className="form-group">
+      <label className="block text-gray-700">Issue Type</label>
+      <select
+        value={Category}
+        onChange={(e) => setIssueType(e.target.value)}
+        required
+        className="w-full p-2 border border-gray-300 rounded-md"
+      >
+        <option value="">Select issue type</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Software">Software</option>
+      </select>
+    </div>
+  
+    {flag !== "admin" && (
       <div className="form-group">
-        <label>Issue Title</label>
-        <input
-          type="text"
-          value={Title}
-          onChange={(e) => setIssueTitle(e.target.value)}
-          required
-        />
-      </div>
-
-      <div className="form-group">
-        <label>Issue Description</label>
-        <textarea
-          value={Description}
-          onChange={(e) => setIssueDescription(e.target.value)}
-          required
-        />
-      </div>
-
-      <div className="form-group">
-        <label>Issue Type</label>
+        <label className="block text-gray-700">Device Delivery Method</label>
         <select
-          value={Category}
-          onChange={(e) => setIssueType(e.target.value)}
+          value={DeviceDeliveryMethod}
+          onChange={(e) => setDeviceDeliveryMethod(e.target.value)}
           required
-          className="custom-select"
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
-          <option value="">Select issue type</option>
-          <option value="Hardware">Hardware</option>
-          <option value="Software">Software</option>
+          <option value="">Select delivery method</option>
+          <option value="pickup">On Site</option>
+          <option value="company">Delivery</option>
         </select>
       </div>
-
-    
-      {flag !== "admin" && (
+    )}
+  
+    {flag === "admin" && (
+      <>
         <div className="form-group">
-          <label>Device Delivery Method</label>
-          <select
-            value={DeviceDeliveryMethod}
-            onChange={(e) => setDeviceDeliveryMethod(e.target.value)}
+          <label className="block text-gray-700">Actual Cost</label>
+          <input
+            type="number"
+            value={actualCost}
+            onChange={(e) => setActualCost(e.target.value)}
             required
-          >
-            <option value="">Select delivery method</option>
-            <option value="pickup">On Site</option>
-            <option value="company">Delivery</option>
-          </select>
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+  
+        <div className="form-group">
+          <label className="block text-gray-700">Maintenance Time (Hours)</label>
+          <input
+            type="number"
+            value={maintenanceTime}
+            onChange={(e) => setMaintenanceTime(e.target.value)}
+            required
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+  
+        <div className="form-group">
+          <label className="block text-gray-700">Is Common Issue?</label>
+          <input
+            type="checkbox"
+            checked={isCommon}
+            onChange={(e) => setIsCommon(e.target.checked)}
+            className="mr-2"
+          />
+          <span>Yes</span>
+        </div>
+      </>
+    )}
+  
+    <div className="form-group">
+      <label className="block text-gray-700">Upload Image</label>
+      <label
+        htmlFor="file-upload"
+        className="upload-btn text-white bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-md cursor-pointer inline-block"
+      >
+        Choose File
+      </label>
+      <input
+        id="file-upload"
+        type="file"
+        onChange={handleImageChange}
+        className="hidden"
+      />
+      {imagePreview && (
+        <div className="image-preview mt-2">
+          <img src={imagePreview} alt="Selected" className="uploadImg w-32 h-32 object-cover" />
+          <p className="mt-2">
+            File selected: {image.name}
+            <button
+              type="button"
+              onClick={handleRemoveImage}
+              className="ml-2 bg-red-600 text-white py-1 px-2 rounded-md"
+            >
+              X
+            </button>
+          </p>
         </div>
       )}
-
-
-      {flag === "admin" && (
-        <>
-          <div className="form-group">
-            <label>Actual Cost</label>
-            <input
-              type="number"
-              value={actualCost}
-              onChange={(e) => setActualCost(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Maintenance Time (Hours)</label>
-            <input
-              type="number"
-              value={maintenanceTime}
-              onChange={(e) => setMaintenanceTime(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Is Common Issue?</label>
-            <input
-              type="checkbox"
-              checked={isCommon}
-              onChange={(e) => setIsCommon(e.target.checked)}
-            />
-          </div>
-        </>
-      )}
-
-      <div className="form-group">
-        <label>Upload Image</label>
-        <label htmlFor="file-upload" className="upload-btn text-white">
-          Choose File
-        </label>
-        <input id="file-upload" type="file" onChange={handleImageChange} />
-        {imagePreview && (
-          <div className="image-preview">
-            <img src={imagePreview} alt="Selected" className="uploadImg" />
-            <p>
-              File selected: {image.name}
-              <button
-                type="button"
-                onClick={handleRemoveImage}
-                className="remove-btn"
-              >
-                X
-              </button>
-            </p>
-          </div>
-        )}
-      </div>
-      <button type="submit" disabled={loading}>
-        {loading ? "Submitting..." : "Submit Request"}
-      </button>
-    </form>
+    </div>
+  
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md disabled:opacity-50"
+    >
+      {loading ? "Submitting..." : "Submit Request"}
+    </button>
+  </form>
+  
   );
 }
 

@@ -11,7 +11,6 @@ import {
   usenewRequest,
   useApproveRequest,
 } from "../../../hooks/useNewRequestHook";
-// Set the root element for the modal
 Modal.setAppElement("#root");
 
 function NewRequest() {
@@ -20,7 +19,7 @@ function NewRequest() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [feedback, setFeedback] = useState({
-    estimatedCost: 50,
+    estimatedCost: 0,
     estimatedTime: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false); // State for feedback modal visibility
@@ -29,18 +28,12 @@ function NewRequest() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  // Function to handle form submission
   const handleSubmit = async (formData) => {
-    setLoading(true); // Set loading to true while processing
+    setLoading(true);
     const data = { Category: formData.Category };
     try {
-      // Post the form data to the backend
       const response = await newrequestMutation.mutateAsync(data);
-      console.log(response);
-
       setData(formData);
-
-      // Process the response data
       setFeedback({
         estimatedCost: response.EstimatedCost,
         estimatedTime: response.EstimatedTime.split("T")[0],
@@ -48,21 +41,21 @@ function NewRequest() {
       setModalMessage(
         "Your request has been submitted successfully. You can track the status of your request by going to the 'My Requests' page."
       );
-      setIsModalOpen(true); // Open feedback modal
+      setIsModalOpen(true);
     } catch (error) {
       console.error("Error submitting request:", error);
       setFeedback({ error: "There was an error submitting your request." });
       setModalMessage(
         "There was an error submitting your request. Please try again later."
       );
-      setIsModalOpen(true); // Open feedback modal
+      setIsModalOpen(true); 
     } finally {
-      setLoading(false); // Set loading to false after processing
+      setLoading(false);
     }
   };
 
   const handleApprove = async () => {
-    setLoading(true); // Set loading to true while processing
+    setLoading(true);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("Title", data.Title);
@@ -76,21 +69,21 @@ function NewRequest() {
 
       const response = await approveRequestmutation.mutateAsync(formDataToSend);
 
-      setIsModalOpen(false); // Close feedback modal
+      setIsModalOpen(false); 
       setModalMessage(
         "Your request has been successfully approved. You can track the status of your request by going to the 'My Requests' page."
       );
-      setIsSuccessModalOpen(true); // Open success modal
+      setIsSuccessModalOpen(true); 
     } catch (error) {
       console.error("Error approving request:", error);
       setFeedback({ error: "There was an error approving your request." });
       setModalMessage(
         "There was an error approving your request. Please try again later."
       );
-      setIsModalOpen(false); // Close feedback modal
-      setIsSuccessModalOpen(true); // Open success modal
+      setIsModalOpen(false); 
+      setIsSuccessModalOpen(true); 
     } finally {
-      setLoading(false); // Set loading to false after processing
+      setLoading(false); 
     }
   };
 
@@ -107,7 +100,7 @@ function NewRequest() {
 
   return (
     <div className="my-14 new-request-container">
-      {loading && <Loading />} {/* Show loading spinner if loading is true */}
+      {loading && <Loading />}
       <h2>Submit a New Support Request</h2>
       <RequestForm onSubmit={handleSubmit} loading={loading} flag="customer" />
       <Modal
