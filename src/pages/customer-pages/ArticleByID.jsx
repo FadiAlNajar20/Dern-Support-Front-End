@@ -24,8 +24,8 @@ export default function ArticleByID() {
       <div className="max-w-4xl mx-auto">
         <>
           <img
-            className="max-w-full mt-20"
-            src={article[0].image}
+            className="max-w-full mt-20 rounded-xl"
+            src={`${import.meta.env.VITE_SERVER_URL}/image/${article[0].image}`}
             alt={article[0].title}
           />
           <div className="p-8">

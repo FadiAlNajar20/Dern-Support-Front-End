@@ -10,13 +10,13 @@ import {
 export default function DashbordArticlesID() {
   const location = useLocation();
   const navigate = useNavigate();
-  const info = location.state?.articles;
+  const info = location.state?.article;
   const [isEditing, setIsEditing] = useState(false);
-  const [description, setDescription] = useState(info?.description || "");
+  const [description, setDescription] = useState(info?.description);
   const { refetch } = useGetAllArticles();
   const updateArticleMutation = useUpdateArticle();
   const deleteArticleMutation = useDeleteArticle();
-console.log(info);
+  console.log(description);
 
   const handleEditToggle = async () => {
     if (isEditing) {
@@ -89,9 +89,7 @@ console.log(info);
                 <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-600 rounded-full" />
               </div>
             </div>
-            <div className="text-3xl font-bold mb-4 text-center">
-              <h1>{info?.title}</h1>
-            </div>
+            
 
 
             <div className="mb-4">
@@ -107,10 +105,11 @@ console.log(info);
                 />
               )}
             </div>
+            <div className="text-3xl font-bold mb-4 text-left">
+              <h1>{info?.title}</h1>
+            </div>
             <div className="w-full mb-4 border border-gray-200 rounded-lg ">
-              <div className="px-4 py-2 bg-white rounded-b-lg 
-              
-              ">
+              <div className="px-4 py-2 bg-white rounded-b-lg">
                 <label htmlFor="editor" className="sr-only">
                   Article
                 </label>
